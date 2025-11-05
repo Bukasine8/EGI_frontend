@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 9%;
+
+    /* EGI Brand Colors - Original Palette */
+    /* Forest Green - Primary */
+    --primary: 120 45% 15%; /* #1B2D1A */
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 120 45% 12%;
+    --primary-light: 120 45% 95%;
+
+    /* Lime Green - Accent */
+    --secondary: 74 65% 58%; /* #BED450 */
+    --secondary-foreground: 120 45% 15%;
+
+    /* Sky Blue - Secondary Light */
+    --accent: 194 65% 78%; /* #ACD7EC */
+    --accent-foreground: 120 45% 15%;
+
+    /* Blue Grey - Secondary Dark */
+    --muted: 230 25% 67%; /* #8B95C9 */
+    --muted-foreground: 220 9% 46%;
+
+    /* Soft White - Background Contrast */
+    --soft-white: 210 100% 95%; /* #D6EDFF */
+    
+    /* Modern enhancement variants using EGI colors */
+    --holographic-1: 74 65% 58%; /* Lime Green */
+    --holographic-2: 194 65% 78%; /* Sky Blue */
+    --holographic-3: 230 25% 67%; /* Blue Grey */
+    
+    /* Glass morphism with EGI colors */
+    --glass-bg: 120 45% 15% / 0.1;
+    --glass-border: 74 65% 58% / 0.2;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 74 65% 58%;
+    --warning: 38 92% 50%;
+    --info: 194 65% 78%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 120 45% 15%;
+
+    --radius: 1rem; /* Updated to 2xl for EGI design */
+  }
+
+  .dark {
+    --background: 220 13% 9%;
+    --foreground: 0 0% 100%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 120 45% 15%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 74 65% 58%;
+    --secondary-foreground: 120 45% 15%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 194 65% 78%;
+    --accent-foreground: 120 45% 15%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 120 45% 15%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Modern Typography System */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  
+  .font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Modern 2025 Component System */
+  
+  /* Holographic Gradients */
+  .egi-gradient-holographic {
+    background: linear-gradient(45deg, 
+      hsl(var(--holographic-1)) 0%, 
+      hsl(var(--holographic-2)) 25%, 
+      hsl(var(--secondary)) 50%, 
+      hsl(var(--accent)) 75%, 
+      hsl(var(--holographic-3)) 100%);
+    background-size: 400% 400%;
+    animation: holographic-shift 8s ease-in-out infinite;
+  }
+  
+  .egi-gradient-neural {
+    background: linear-gradient(135deg, 
+      hsl(var(--primary)) 0%, 
+      hsl(var(--secondary)) 50%, 
+      hsl(var(--accent)) 100%);
+  }
+  
+  /* Glassmorphism Cards */
+  .egi-glass-card {
+    @apply rounded-3xl p-8 transition-all duration-500;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .egi-glass-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Futuristic Buttons */
+  .egi-button-cyber {
+    @apply relative px-8 py-4 font-semibold rounded-2xl transition-all duration-300;
+    background: linear-gradient(45deg, hsl(var(--secondary)), hsl(var(--accent)));
+    color: hsl(var(--primary));
+    border: 2px solid transparent;
+    overflow: hidden;
+  }
+  
+  .egi-button-cyber::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+  }
+  
+  .egi-button-cyber:hover::before {
+    left: 100%;
+  }
+  
+  .egi-button-ghost {
+    @apply px-8 py-4 font-semibold rounded-2xl transition-all duration-300;
+    background: transparent;
+    color: hsl(var(--secondary));
+    border: 2px solid hsl(var(--secondary));
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .egi-button-ghost::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: hsl(var(--secondary));
+    transition: width 0.3s ease;
+    z-index: -1;
+  }
+  
+  .egi-button-ghost:hover::before {
+    width: 100%;
+  }
+  
+  .egi-button-ghost:hover {
+    color: hsl(var(--primary));
+  }
+  
+  /* Holographic Text */
+  .egi-text-holographic {
+    background: linear-gradient(45deg, 
+      hsl(var(--holographic-1)), 
+      hsl(var(--holographic-2)), 
+      hsl(var(--secondary)), 
+      hsl(var(--accent)));
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographic-shift 6s ease-in-out infinite;
+  }
+  
+  /* Floating Elements */
+  .egi-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .egi-float-delayed {
+    animation: float 6s ease-in-out infinite 2s;
+  }
+  
+  /* Bento Grid */
+  .egi-bento-grid {
+    @apply grid gap-6;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .egi-bento-item {
+    @apply rounded-3xl p-6 transition-all duration-500;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Scroll Animations */
+  .egi-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .egi-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Utility Classes */
+  .egi-section-padding {
+    @apply px-6 py-32 lg:px-8 lg:py-40;
+  }
+  
+  .egi-container {
+    @apply mx-auto max-w-7xl;
+  }
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted) / 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, hsl(var(--secondary)), hsl(var(--accent)));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--holographic-1)));
+}
+
+/* Keyframe Animations */
+@keyframes holographic-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--secondary) / 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--secondary) / 0.8), 0 0 60px hsl(var(--accent) / 0.3);
+  }
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: hsl(var(--secondary) / 0.5);
+  }
+  50% {
+    border-color: hsl(var(--secondary));
+  }
+}
+

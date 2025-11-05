@@ -1,0 +1,2 @@
+This signup page is broken and has been replaced by /admin/create-account/page.tsx
+The working signup page is at: /admin/create-account
